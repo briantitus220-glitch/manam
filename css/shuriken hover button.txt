@@ -1,0 +1,45 @@
+.button {
+    position: relative;
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.1rem;
+    border: 0;
+    background: linear-gradient(currentColor, currentColor) left bottom / 42% 1px no-repeat, linear-gradient(currentColor, currentColor) left top / 0 1px no-repeat, linear-gradient(currentColor, currentColor) right top / 1px 0 no-repeat, linear-gradient(currentColor, currentColor) right bottom / 0 1px no-repeat, linear-gradient(currentColor, currentColor) left bottom / 1px 0 no-repeat;
+    box-shadow: none;
+    overflow: visible;
+    color: var(--color-title);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    letter-spacing: var(--tracking-wide);
+    line-height: 1.2;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color var(--transition-fast), opacity var(--transition-fast), transform var(--transition-fast), background-size 520ms ease;
+}
+
+.button::before,
+.button::after {
+    display: none;
+}
+
+.button.ghost {
+    color: var(--color-text-soft);
+    background: linear-gradient(currentColor, currentColor) left bottom / 42% 1px no-repeat, linear-gradient(currentColor, currentColor) left top / 0 1px no-repeat, linear-gradient(currentColor, currentColor) right top / 1px 0 no-repeat, linear-gradient(currentColor, currentColor) right bottom / 0 1px no-repeat, linear-gradient(currentColor, currentColor) left bottom / 1px 0 no-repeat;
+}
+
+.button.ghost:hover,
+.button.ghost.is-tracing {
+    color: var(--color-title);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .button:hover {
+        color: #ffffff;
+        transform: translateY(-1px);
+        background-size: 100% 1px, 100% 1px, 1px 100%, 100% 1px, 1px 100%;
+    }
+}

@@ -1,0 +1,159 @@
+/* ================================
+   M'ANAM TOKENS
+   Fonts, colours, spacing, sizing
+================================ */
+
+
+/* Local Fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.cdnfonts.com/css/elder-futhark');
+@import url('https://fonts.cdnfonts.com/css/grandiosity');
+@import url('https://fonts.cdnfonts.com/css/borndia');
+@font-face {
+    font-family: "Norse Bold";
+    src: url("../fonts/NorseBold-2Kge.otf") format("opentype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Trajanus Roman";
+    src: url("../fonts/TrajanusRoman-6aEq.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Futhark Vikings";
+    src: url("../fonts/Futharkvikings-z8VrD.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/* Global Design Tokens */
+
+:root {
+    /* Fonts */
+    --font-body: "Raleway", system-ui, sans-serif;
+    --font-title: "Trajanus Roman", Georgia, serif;
+    --font-eyebrow: "Norse Bold", Georgia, serif;
+    --font-rune: "Elder Futhark", "Futhark Vikings", Georgia, serif;
+    --font-logo: 'Grandiosity', sans-serif;
+    --font-hero: 'Borndia', sans-serif;
+    /* Font Sizes */
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-md: 1.125rem;
+    --text-lg: 1.35rem;
+    --text-xl: 1.75rem;
+    --text-2xl: 2.4rem;
+    --text-3xl: clamp(3rem, 7vw, 6.5rem);
+    --text-hero: clamp(4.5rem, 13vw, 12rem);
+    /* Line Heights */
+    --leading-tight: 0.9;
+    --leading-title: 1;
+    --leading-body: 1.7;
+    /* Letter Spacing */
+    --tracking-tight: -0.03em;
+    --tracking-normal: 0;
+    --tracking-wide: 0.08em;
+    --tracking-wider: 0.16em;
+    /* Section Widths */
+    --width-narrow: 760px;
+    --width-standard: 1120px;
+    --width-wide: 1440px;
+    /* General Spacing */
+    --space-2xs: 0.25rem;
+    --space-xs: 0.5rem;
+    --space-sm: 0.85rem;
+    --space-md: 1.25rem;
+    --space-lg: 2rem;
+    --space-xl: 3rem;
+    --space-2xl: 5rem;
+    --space-3xl: 7rem;
+    /* Layout Spacing */
+    --page-gutter: clamp(1.1rem, 4vw, 4rem);
+    --section-padding-y: clamp(4rem, 9vw, 8rem);
+    --section-gap: clamp(2rem, 5vw, 5rem);
+    /* Borders */
+    --radius-sm: 0.35rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1.5rem;
+    --radius-pill: 999px;
+    /* Effects */
+    --shadow-soft: 0 1.5rem 4rem rgba(0, 0, 0, 0.22);
+    --shadow-deep: 0 2rem 6rem rgba(0, 0, 0, 0.38);
+    /* Transitions */
+    --transition-fast: 160ms ease;
+    --transition-medium: 260ms ease;
+    --transition-slow: 420ms ease;
+}
+
+
+/* ================================
+   Dark Theme - Default
+================================ */
+
+:root,
+[data-theme="dark"] {
+    color-scheme: dark;
+    --color-bg: #211f25;
+    --color-bg-soft: #332d37;
+    --color-bg-muted: #404a5a;
+    --color-surface: #3f3138;
+    --color-surface-soft: #5a423d;
+    --color-surface-muted: #887d77;
+    --color-text: #f0e9e6;
+    --color-text-soft: #d8cfca;
+    --color-text-muted: #a99b96;
+    --color-title: #f4ece9;
+    --color-eyebrow: #cbb4bd;
+    --color-accent: #c8b4c4;
+    --color-accent-deep: #5c4b57;
+    --color-accent-warm: #592e3a;
+    --color-border: rgba(240, 233, 230, 0.18);
+    --color-border-strong: rgba(240, 233, 230, 0.34);
+    --color-button-bg: #f0e9e6;
+    --color-button-text: #211f25;
+    --color-button-border: #f0e9e6;
+    --color-rune: rgba(200, 180, 196, 0.14);
+    --color-rune-strong: rgba(200, 180, 196, 0.24);
+    --color-overlay: rgba(20, 18, 23, 0.55);
+}
+
+
+/* ================================
+   Light Theme
+================================ */
+
+[data-theme="light"] {
+    color-scheme: light;
+    --color-bg: #ebdfef;
+    --color-bg-soft: #d6d0cc;
+    --color-bg-muted: #cbb4c4;
+    --color-surface: #f3ecef;
+    --color-surface-soft: #c8b4c4;
+    --color-surface-muted: #978090;
+    --color-text: #261f28;
+    --color-text-soft: #3f3138;
+    --color-text-muted: #6a5e67;
+    --color-title: #261f28;
+    --color-eyebrow: #592e3a;
+    --color-accent: #978090;
+    --color-accent-deep: #5c4b57;
+    --color-accent-warm: #591214;
+    --color-border: rgba(38, 31, 40, 0.16);
+    --color-border-strong: rgba(38, 31, 40, 0.32);
+    --color-button-bg: #261f28;
+    --color-button-text: #f3ecef;
+    --color-button-border: #261f28;
+    --color-rune: rgba(92, 75, 87, 0.12);
+    --color-rune-strong: rgba(92, 75, 87, 0.2);
+    --color-overlay: rgba(235, 223, 239, 0.55);
+}
