@@ -1,0 +1,463 @@
+/* ================================
+   M'ANAM LAYOUT LIBRARY
+   Section widths and page structure
+================================ */
+
+
+/* ================================
+   Shared Section Base
+================================ */
+
+.text-narrow,
+.text-standard,
+.text-wide,
+.image-narrow,
+.image-standard,
+.image-wide,
+.split-narrow,
+.split-standard,
+.split-wide {
+    position: relative;
+    width: min(100% - calc(var(--page-gutter) * 2), var(--width-standard));
+    margin-inline: auto;
+    padding-block: var(--section-padding-y);
+}
+
+
+/* Width Variants */
+
+.text-narrow,
+.image-narrow,
+.split-narrow {
+    max-width: var(--width-narrow);
+}
+
+.text-standard,
+.image-standard,
+.split-standard {
+    max-width: var(--width-standard);
+}
+
+.text-wide,
+.image-wide,
+.split-wide {
+    max-width: var(--width-wide);
+}
+
+
+/* Contained Section Divider */
+
+.text-narrow::after,
+.text-standard::after,
+.text-wide::after,
+.image-narrow::after,
+.image-standard::after,
+.image-wide::after,
+.split-narrow::after,
+.split-standard::after,
+.split-wide::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--color-border);
+}
+
+
+/* ================================
+   Text Sections
+================================ */
+
+.text-narrow,
+.text-standard,
+.text-wide {
+    text-align: center;
+}
+
+.text-narrow p,
+.text-standard p,
+.text-wide p {
+    max-width: 68ch;
+    margin-inline: auto;
+}
+
+
+/* ================================
+   Image Sections
+================================ */
+
+.image-narrow img,
+.image-standard img,
+.image-wide img {
+    display: block;
+    width: 100%;
+    height: auto;
+    box-shadow: var(--shadow-soft);
+}
+
+
+/* ================================
+   Split Sections
+================================ */
+
+.split-narrow,
+.split-standard,
+.split-wide {
+    display: flex;
+    align-items: center;
+    gap: var(--section-gap);
+}
+
+.split-narrow>*,
+.split-standard>*,
+.split-wide>* {
+    flex: 1;
+}
+
+.reverse {
+    flex-direction: row-reverse;
+}
+
+.section-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+}
+
+.section-text p {
+    max-width: 62ch;
+}
+
+.section-image {
+    position: relative;
+}
+
+.section-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 420px;
+    object-fit: cover;
+    box-shadow: var(--shadow-soft);
+}
+
+
+/* ================================
+   Hero
+================================ */
+
+.hero {
+    position: relative;
+    min-height: 75vh;
+    display: grid;
+    place-items: center;
+    padding: var(--section-padding-y) var(--page-gutter);
+    overflow: hidden;
+    background: var(--color-bg);
+}
+
+
+/* Parallax hero image layer */
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: -12% 0;
+    z-index: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: translate3d(0, var(--hero-scroll, 0px), 0) scale(1.08);
+    will-change: transform;
+    opacity: 0.5;
+}
+
+
+/* Bottom hero fade */
+
+
+/* Bottom hero fade + contained divider */
+
+.hero::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 4;
+    height: 32vh;
+    background: linear-gradient( 90deg, transparent 0%, var(--color-border) 12%, var(--color-border-strong) 50%, var(--color-border) 88%, transparent 100%) center bottom / calc(100% - calc(var(--page-gutter) * 2)) 1px no-repeat, linear-gradient( to bottom, rgba(33, 31, 37, 0) 0%, rgba(33, 31, 37, 0.45) 48%, var(--color-bg) 100%);
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    width: min(100%, var(--width-standard));
+    margin-inline: auto;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding-top: 5rem;
+    transform: translate3d(0, var(--hero-text-scroll, 0px), 0);
+    will-change: transform;
+    opacity: var(--hero-text-opacity, 1);
+}
+
+.hero-text {
+    padding-top: 2.5rem;
+    max-width: 42ch;
+    margin-top: var(--space-md);
+    font-size: clamp(0.85rem, 1.2vw, 1rem);
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.72);
+}
+
+
+/* ================================
+   Hero Smoke Layers
+   CSS-only smoke effect used inside .hero
+================================ */
+
+.hero-smoke {
+    position: absolute;
+    inset: auto -14% -22% -14%;
+    z-index: 2;
+    height: 72%;
+    pointer-events: none;
+    background: radial-gradient(ellipse at 14% 68%, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.12) 18%, transparent 48%), radial-gradient(ellipse at 46% 78%, rgba(228, 228, 238, 0.22) 0%, rgba(228, 228, 238, 0.1) 23%, transparent 54%), radial-gradient(ellipse at 82% 72%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.09) 21%, transparent 52%);
+    filter: blur(24px);
+    opacity: 1;
+    mix-blend-mode: screen;
+    transform: translate3d(0, 0, 0) scale(1.15);
+    animation: heroSmokeDrift 15s ease-in-out infinite alternate;
+}
+
+.hero-smoke-two {
+    inset: auto -22% -14% -22%;
+    height: 82%;
+    opacity: 0.78;
+    background: radial-gradient(ellipse at 20% 64%, rgba(200, 200, 214, 0.22) 0%, rgba(200, 200, 214, 0.1) 25%, transparent 58%), radial-gradient(ellipse at 58% 80%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.09) 23%, transparent 56%), radial-gradient(ellipse at 90% 60%, rgba(218, 205, 220, 0.18) 0%, rgba(218, 205, 220, 0.08) 19%, transparent 50%);
+    filter: blur(32px);
+    animation: heroSmokeDriftAlt 20s ease-in-out infinite alternate;
+}
+
+.hero-smoke-three {
+    inset: 2% -18% auto -18%;
+    z-index: 2;
+    height: 72%;
+    opacity: 0.48;
+    pointer-events: none;
+    background: radial-gradient(ellipse at 16% 42%, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.08) 22%, transparent 55%), radial-gradient(ellipse at 52% 48%, rgba(235, 235, 245, 0.16) 0%, rgba(235, 235, 245, 0.07) 24%, transparent 58%), radial-gradient(ellipse at 84% 38%, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.06) 20%, transparent 52%);
+    filter: blur(38px);
+    mix-blend-mode: screen;
+    animation: heroSmokeDriftWide 26s ease-in-out infinite alternate;
+}
+
+@keyframes heroSmokeDrift {
+    0% {
+        transform: translate3d(-7%, 7%, 0) scale(1.12);
+        opacity: 0.68;
+    }
+    50% {
+        transform: translate3d(5%, -10%, 0) scale(1.3);
+        opacity: 1;
+    }
+    100% {
+        transform: translate3d(12%, -20%, 0) scale(1.42);
+        opacity: 0.72;
+    }
+}
+
+@keyframes heroSmokeDriftAlt {
+    0% {
+        transform: translate3d(7%, 9%, 0) scale(1.1);
+        opacity: 0.36;
+    }
+    50% {
+        transform: translate3d(-5%, -6%, 0) scale(1.26);
+        opacity: 0.58;
+    }
+    100% {
+        transform: translate3d(-10%, -16%, 0) scale(1.38);
+        opacity: 0.42;
+    }
+}
+
+@keyframes heroSmokeDriftWide {
+    0% {
+        transform: translate3d(-8%, 2%, 0) scale(1.05);
+        opacity: 0.18;
+    }
+    50% {
+        transform: translate3d(2%, -4%, 0) scale(1.18);
+        opacity: 0.34;
+    }
+    100% {
+        transform: translate3d(10%, -9%, 0) scale(1.3);
+        opacity: 0.24;
+    }
+}
+
+
+/* ================================
+   Closing Section
+================================ */
+
+.closing-section {
+    padding-bottom: var(--section-padding-y);
+}
+
+
+/* ================================
+   Site Header Layout
+================================ */
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    padding: var(--space-md) var(--page-gutter);
+    background: linear-gradient( 180deg, rgba(20, 18, 23, 0.9) 0%, rgba(20, 18, 23, 0.58) 68%, rgba(20, 18, 23, 0) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.site-header-inner {
+    position: relative;
+    width: min(100%, var(--width-wide));
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-lg);
+}
+
+.site-header-inner::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: calc(var(--space-md) * -0.75);
+    height: 1px;
+    background: linear-gradient( 90deg, transparent 0%, var(--color-border) 12%, var(--color-border-strong) 50%, var(--color-border) 88%, transparent 100%);
+}
+
+.site-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+
+/* ================================
+   Section Block Shell
+   Heading strip + independent body
+================================ */
+
+.section-block {
+    position: relative;
+    width: min(100% - calc(var(--page-gutter) * 2), var(--width-standard));
+    margin-inline: auto;
+    padding-block: var(--section-padding-y);
+}
+
+.section-block::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--color-border);
+}
+
+.section-block.section-narrow {
+    max-width: var(--width-narrow);
+}
+
+.section-block.section-standard {
+    max-width: var(--width-standard);
+}
+
+.section-block.section-wide {
+    max-width: var(--width-wide);
+}
+
+
+/* Heading strip */
+
+.section-heading {
+    width: 100%;
+    margin-bottom: clamp(2rem, 5vw, 4rem);
+}
+
+.heading-left {
+    text-align: left;
+}
+
+.heading-center {
+    text-align: center;
+}
+
+.heading-right {
+    text-align: right;
+}
+
+.heading-center .eyebrow,
+.heading-center .section-title {
+    margin-inline: auto;
+}
+
+.heading-right .eyebrow,
+.heading-right .section-title {
+    margin-left: auto;
+}
+
+
+/* Body row */
+
+.section-body {
+    width: 100%;
+}
+
+.section-body.split-narrow,
+.section-body.split-standard,
+.section-body.split-wide {
+    display: flex;
+    align-items: center;
+    gap: var(--section-gap);
+}
+
+.section-body.split-narrow>*,
+.section-body.split-standard>*,
+.section-body.split-wide>* {
+    min-width: 0;
+}
+
+
+/* Wider text column inside split bodies */
+
+.section-body.split-narrow>.section-text,
+.section-body.split-standard>.section-text,
+.section-body.split-wide>.section-text {
+    flex: 1.25 1 0;
+}
+
+.section-body.split-narrow>.section-image,
+.section-body.split-standard>.section-image,
+.section-body.split-wide>.section-image,
+.section-body.split-narrow>.section-card,
+.section-body.split-standard>.section-card,
+.section-body.split-wide>.section-card {
+    flex: 0.75 1 0;
+}
+
+.section-body.reverse {
+    flex-direction: row-reverse;
+}
