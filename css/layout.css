@@ -151,7 +151,7 @@
 
 .hero {
     position: relative;
-    min-height: 75vh;
+    min-height: 90vh;
     display: grid;
     place-items: center;
     padding: var(--section-padding-y) var(--page-gutter);
