@@ -523,6 +523,10 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
 }
 
 .section-image img {
@@ -531,8 +535,8 @@
     max-width: 100%;
     height: auto;
     max-height: 72vh;
-    border: 0.5px solid rgba(255, 255, 255, 0.24);
     object-fit: contain;
+    border: 0.5px solid rgba(255, 255, 255, 0.24);
 }
 
 .image-narrow img,

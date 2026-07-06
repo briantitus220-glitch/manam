@@ -461,3 +461,42 @@
 .section-body.reverse {
     flex-direction: row-reverse;
 }
+
+
+/* ================================
+   Tight In-Page Image Frames
+================================ */
+
+.section-image {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: fit-content !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    outline: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.section-image::before,
+.section-image::after {
+    display: none !important;
+    content: none !important;
+}
+
+.section-image img {
+    display: block !important;
+    width: auto !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: 72vh !important;
+    object-fit: contain !important;
+    border: 0.5px solid rgba(255, 255, 255, 0.28) !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
