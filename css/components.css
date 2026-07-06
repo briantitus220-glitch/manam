@@ -114,7 +114,7 @@
     font-size: clamp(0.25rem, 7vw, 1.1rem);
     font-weight: 700;
     line-height: var(--leading-title);
-    letter-spacing: 0.03em;
+    letter-spacing: 0em;
     color: var(--color-title);
 }
 
@@ -122,7 +122,7 @@
     font-size: 1.25em;
     letter-spacing: 2.5rem;
     font-weight: bold;
-    color: #ff000073;
+    color: var(--color-rune-strong);
 }
 
 .section-title.rune-title {
@@ -130,7 +130,7 @@
     font-size: clamp(0.25rem, 7vw, 1.1rem);
     font-weight: 300;
     line-height: var(--leading-title);
-    letter-spacing: 1em;
+    letter-spacing: 0.65em;
     color: var(--color-title);
     text-transform: uppercase;
 }
@@ -153,7 +153,7 @@
     font-size: 1.5em;
     right: -59%;
     letter-spacing: 1.38em;
-    color: rgba(255, 255, 255, 0.267);
+    color: var(--color-rune-strong);
     transform: translate(-50%, -50%) scale(1.12);
 }
 
@@ -314,7 +314,7 @@
 
 .hero-carousel-dot.is-active {
     background: currentColor;
-    color: rgba(255, 255, 255, 0.86);
+    color: rgba(238, 1, 1, 0.432);
     transform: scale(1.15);
 }
 
@@ -515,6 +515,33 @@
     letter-spacing: var(--tracking-wider);
     text-transform: uppercase;
     color: var(--color-eyebrow);
+}
+
+.section-image {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.section-image img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 72vh;
+    border: 0.5px solid rgba(255, 255, 255, 0.24);
+    object-fit: contain;
+}
+
+.image-narrow img,
+.image-standard img,
+.image-wide img {
+    display: block;
+    width: 100%;
+    height: auto;
+    box-shadow: var(--shadow-soft);
 }
 
 
