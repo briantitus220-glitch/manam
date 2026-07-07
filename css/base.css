@@ -57,7 +57,7 @@ button,
 input,
 textarea,
 select {
-    font: inherit;
+    font: var(--font-hero);
 }
 
 button {
@@ -206,4 +206,55 @@ a,
 section,
 div {
     transition: background-color var(--transition-medium), color var(--transition-medium), border-color var(--transition-medium);
+}
+
+
+/* ================================
+   Footer Refinement
+   Add/replace near the bottom of components.css
+================================ */
+
+.site-footer {
+    padding-block: clamp(2.1rem, 5.1vw, 4.25rem);
+}
+
+.site-footer-inner {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: var(--space-xl);
+}
+
+.footer-site-logo {
+    width: fit-content;
+}
+
+.footer-credit {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.42);
+    font-family: var(--font-hero);
+    font-size: clamp(0.28rem, 0.9vw, 0.48rem);
+    font-weight: 300;
+    line-height: 1em;
+    letter-spacing: 0.22em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.footer-socials {
+    justify-self: end;
+}
+
+@media (max-width: 820px) {
+    .site-footer-inner {
+        grid-template-columns: 1fr;
+        justify-items: start;
+        gap: var(--space-md);
+    }
+    .footer-credit {
+        text-align: left;
+    }
+    .footer-socials {
+        justify-self: start;
+    }
 }

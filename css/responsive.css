@@ -257,7 +257,7 @@
         color: #ffffff;
     }
     .button.is-tracing .button-border rect {
-        stroke-dasharray: 1 1;
+        stroke-dasharray: 0 1;
         stroke-dashoffset: -1;
     }
     .button.ghost.is-tracing {
